@@ -111,3 +111,211 @@ const pili = new Student4({
   instagram: 'filarzita',
   email: 'lalokita@catmail.com'
 })
+
+
+////////////////
+
+// Creando Objetos Literales
+
+const santi1 = {
+  name: 'Santi',
+  username: 'SantiRojo',
+  points: 100,
+  socialMedia: {
+    twitter: 'RojoIsTweeting',
+    instagram: 'rojo.saint',
+    facebook: 'Santi Rojo',
+  },
+  approvedCourses: [
+    'Curso Básico de JavaScript',
+    'Curso Práctico de JavaScript',
+  ],
+  learningPaths: [
+    {
+      name: 'Escuela de Desarrollo Web',
+      courses: [
+        'Curso Básico de Css',
+        'Curso Básico de JavaScript',
+        'Curso Práctico de JavaScript',
+      ],
+    },
+    {
+      name: 'Escuela de Videojuegos',
+      courses: [
+        'Curso de Introducción a la producción de videojuegos',
+        'Curso de Unreal Engine',
+        'Curso de Unity 3D',
+      ],
+    }
+  ]
+}
+
+const zeus1 = {
+  name: 'Zeus',
+  username: 'ZeusRojo',
+  points: 100,
+  socialMedia: {
+    twitter: 'IshiIsTweeting',
+    instagram: 'rojo.ishi',
+    facebook: 'Zeus Rojo',
+  },
+  approvedCourses: [
+    'Curso Básico Data Business',
+    'Curso de Data Viz',
+  ],
+  learningPaths: [
+    {
+      name: 'Escuela de Desarrollo Web',
+      courses: [
+        'Curso Básico de Css',
+        'Curso Básico de JavaScript',
+        'Curso Práctico de JavaScript',
+      ],
+    },
+    {
+      name: 'Escuela de Data Science',
+      courses: [
+        'Curso Básico Data Business',
+        'Curso de Data Viz',
+        'Curso de Tableau',
+      ],
+    }
+  ]
+}
+
+// Creando Objetos con Clases
+
+class Course {
+  constructor({
+    courseName,
+    classes = [],
+  }) {
+    this._courseName = courseName;
+    this.classes = classes;
+  }
+
+  get courseName() {
+    return this._courseName;
+  }
+
+  set courseName(nuevoNombre) {
+    if(nuevoNombre === 'Curso Malito de Programación Básica') {
+      console.error('Wey...no')
+    } else{
+      this._courseName = nuevoNombre;
+    }
+  }
+}
+
+const cursoProgBasica = new Course({
+  courseName: 'Curso de Programación Básica',
+})
+
+const cursoDefinitivoHTML = new Course({
+  courseName: 'Curso Definitivo de HTML y CSS',
+})
+
+const cursoPracticoHTML = new Course({
+  courseName: 'Curso Práctico de HTML y CSS',
+})
+
+class LearningPath {
+  constructor({
+    school,
+    courses = [],
+  }) {
+    this.school = school;
+    this.courses = courses;
+  }
+}
+
+class Students {
+  constructor({
+    name,
+    email,
+    username,
+    twitter = undefined,
+    instagram = undefined,
+    facebook = undefined,
+    approvedCourses = [],
+    learningPaths = [],
+  }) {
+    this.name = name;
+    this.email = email;
+    this.username = username;
+    this.socialMedia = {
+      twitter,
+      instagram,
+      facebook,
+    },
+    this.approvedCourses = approvedCourses;
+    this.learningPaths = learningPaths;
+  }
+}
+
+// Instancias de Escuelas
+
+const escuelaDesarrolloWeb = new LearningPath ({
+  school: 'Escuela de Desarrollo Web',
+  courses: [
+    cursoProgBasica,
+    'Curso Básico de JavaScript',
+    'Curso Práctico de JavaScript',
+  ]
+});
+
+const escuelaVideojuegos = new LearningPath({
+  school: 'Escuela de Videojuegos',
+  courses: [
+    cursoProgBasica,
+    'Curso de Unreal Engine',
+    'Curso de Unity 3D',
+  ]
+});
+
+const escuelaDataScience = new LearningPath({
+  school: 'Escuela de Data Science',
+  courses: [
+    'Curso Básico Data Business',
+    'Curso de Data Viz',
+    'Curso de Tableau',
+  ]
+});
+
+
+// Instancias de Alumnos
+
+const miguel = new Students({
+  name: 'Miguel',
+  username: 'ZieloNebrito',
+  email: 'tuzielonebrito@catmail.com',
+  twitter: 'CazandoPajaritos',
+  learningPaths: [
+    escuelaDesarrolloWeb,
+    escuelaVideojuegos,
+  ]
+});
+
+const pilar = new Students({
+  name: 'Pilar',
+  username: 'lagordalaloca',
+  email: 'lagorditafiliz@catmail.com',
+  instagram: 'filizlaborda',
+  learningPaths: [
+    escuelaDataScience,
+    escuelaVideojuegos,
+  ]
+});
+
+const lu = new Students({
+  learningPaths: new LearningPath({
+    school: 'Escuela de UX/UI',
+    courses: [
+      'Curso de UX Design',
+      'Curso de UI Design',
+      'Curso de UX Writing',
+      'Curso de UX Research'
+    ]
+  })
+});
+
